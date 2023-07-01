@@ -28,4 +28,41 @@ Factory pattern mang lại những tác dụng:
 Xét theo ví dụ ở đầu bài viết, Factory pattern sẽ có cấu trúc dạng như sau:
 
 
-Các lớp con Lenovo, Asus, HP đều override lại phương thức getSpec từ interface Computer. Phương thức viewComputer() của client sẽ  gọi tới phương thức viewComputer của lớp ComputerFactory và truyền vào đó một tham số computerBrand, chính là tên của máy tính mà client muốn xem thêm, để tạo một đối tượng tương ứng. Đối tượng này sẽ được sử dụng để chạy phương thức view mà lớp con đã override lại.
+## Cấu trúc
+
+```javascript
+function Designer(name, type) {
+  this.name = name;
+  this.type = type;
+}
+
+function Developer(name, type) {
+  this.name = name;
+  this.type = type;
+}
+
+function EmployeeFactory() {
+  this.create = (name, type) => {
+    switch (type) {
+      case 1:
+        return new Designer(name, type);
+      case 2:
+        return new Developer(name, type);
+      default:
+        break;
+    }
+  };
+}
+
+function say() {
+  console.log("I am a " + this.name + "," + this.type);
+}
+
+const employeeFactory = new EmployeeFactory();
+
+const binh = employeeFactory.create("binh", 1);
+say.call(binh);
+
+```
+
+
