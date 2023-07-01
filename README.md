@@ -8,3 +8,24 @@ Giả sử như bạn cần mua một chiếc máy tính, nhưng bạn vẫn ch�
 
 
 Rõ ràng là cách thứ hai tiết kiệm thời gian và công sức cho bạn rất nhiều. Đây chính là cách mà mẫu thiết kế Factory hoạt động.
+
+## Mẫu thiết kế factory là gì?
+
+Factory pattern là một mẫu thiết kế thuộc nhóm Khởi tạo. Pattern này sử dụng một interface hay một abstract class mà tất cả các lớp chúng ta cần khởi tạo đối tượng sẽ kế thừa. Factory sẽ định nghĩa việc khởi tạo đối tượng, nhưng đối tượng nào sẽ được tạo thì phụ thuộc vào các lớp con. Do vậy, pattern này còn được gọi với cái tên Virtual Constructor (phương thức khởi tạo ảo).
+
+Factory pattern mang lại những tác dụng:
+
+– Tạo ra một cách khởi tạo object mới
+
+– Che giấu quá trình xử lý logic của phương thức khởi tạo
+
+– Giảm sự phụ thuộc, dễ dàng mở rộng trong trường hợp chưa biết chắc số lượng đối tượng là đã đủ hay chưa. Trong trường hợp chúng ta có thêm lớp con kế thừa Factory, việc gọi đến virtual constructor vẫn không hề thay đổi.
+
+– Giảm khả năng gây lỗi compile, trong trường hợp chúng ta cần tạo một đối tượng mà quên khai báo lớp, chúng ta cũng có thể xử lý lỗi trong Factory và khai báo lớp cho chúng sau.
+
+## Cấu trúc của Factory pattern
+
+Xét theo ví dụ ở đầu bài viết, Factory pattern sẽ có cấu trúc dạng như sau:
+
+
+Các lớp con Lenovo, Asus, HP đều override lại phương thức getSpec từ interface Computer. Phương thức viewComputer() của client sẽ  gọi tới phương thức viewComputer của lớp ComputerFactory và truyền vào đó một tham số computerBrand, chính là tên của máy tính mà client muốn xem thêm, để tạo một đối tượng tương ứng. Đối tượng này sẽ được sử dụng để chạy phương thức view mà lớp con đã override lại.
